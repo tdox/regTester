@@ -11,11 +11,11 @@
 module Main where
 
 -- base
-import Data.Either        (rights)
+import Data.Either        (lefts)
 import Data.Maybe         (fromJust)
 import System.Environment (getArgs)
-import System.IO       -- (openFile, IOMode, hGetContents)
-import System.Exit     -- (ExitCode, ExitSuccess)
+import System.IO          (Handle, IOMode(ReadMode), hGetContents, openFile)
+import System.Exit        (ExitCode(ExitSuccess), exitSuccess)
 
 -- filepath
 import System.FilePath ((</>))
@@ -23,12 +23,11 @@ import System.FilePath ((</>))
 -- directory
 import System.Directory ( doesDirectoryExist
                         , doesFileExist
-                        , createDirectory
                         , createDirectoryIfMissing
                         )
 
 -- HSH
-import HSH.Command (run, runIO, (-|-))
+import HSH.Command (run, runIO)
 
 main :: IO ()
 main = do
@@ -75,13 +74,11 @@ main = do
           results <-
             runRegTests program differ auxDir stdsDir (Just testsDir) testNames
             
-          let rightRslts = rights results
-
           mapM_ showResults (zip testNames results)
           
-          let result = if length rightRslts > 0 && and rightRslts
-                       then "Pass"
-                       else "Failure"
+          let result = if length (lefts results) > 0
+                       then "Failure"
+                       else "Pass"
 
           putStrLn result
 
@@ -91,7 +88,7 @@ showResults (testName, result) = do
   putStr $ testName ++ ": "
   case result of
     Left errMsg -> putStrLn errMsg
-    Right b     -> putStrLn "Pass"
+    Right _     -> putStrLn "Pass"
 
 
 type ProgramName = String
