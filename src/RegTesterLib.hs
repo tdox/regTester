@@ -102,12 +102,12 @@ updateStd stdsDirName testsDirName testName = do
   stdOutExists  <- doesFileExist stdOut
   testOutExists <- doesFileExist testOut
   
-  if (not stdOutExists)
-  then error ("std out file " ++ stdOut ++ " does not exist")
+  --if (not stdOutExists)
+  --then error ("std out file " ++ stdOut ++ " does not exist")
+  --else do
+  if (not testOutExists)
+  then error ("test out file " ++ testOut ++ " does not exist")
   else do
-    if (not testOutExists)
-    then error ("test out file " ++ testOut ++ " does not exist")
-    else do
-      putStrLn testName
-      runIO $ "cp " ++ testOut ++ " " ++ stdOut
+    putStrLn testName
+    runIO $ "cp " ++ testOut ++ " " ++ stdOut
 
