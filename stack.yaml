@@ -1,0 +1,6 @@
+flags: {}
+packages:
+- '.'
+extra-deps:
+- HSH-2.1.2
+resolver: lts-3.4

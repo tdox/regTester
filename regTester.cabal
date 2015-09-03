@@ -16,7 +16,7 @@ cabal-version:       >=1.8
 
 executable gui-diff2
   main-is:             gui-diff2.hs
-  build-depends:         base      == 4.7.*
+  build-depends:         base      == 4.8.*
                        , filepath  >= 1.3
                        , directory >= 1.2
                        , HSH       >= 2.1
@@ -24,7 +24,7 @@ executable gui-diff2
 
 executable regTester2
   main-is:             regTester2.hs
-  build-depends:         base      == 4.7.*
+  build-depends:         base      == 4.8.*
                        , filepath  >= 1.3
                        , directory >= 1.2
                        , HSH       >= 2.1
@@ -32,15 +32,7 @@ executable regTester2
 
 executable regTester3
   main-is:             regTester3.hs
-  build-depends:         base      == 4.7.*
-                       , filepath  >= 1.3
-                       , directory >= 1.2
-                       , HSH       >= 2.1
-  hs-source-dirs:      src
-
-executable update-stds2
-  main-is:             update-stds2.hs
-  build-depends:         base      == 4.7.*
+  build-depends:         base      == 4.8.*
                        , filepath  >= 1.3
                        , directory >= 1.2
                        , HSH       >= 2.1

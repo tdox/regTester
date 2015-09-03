@@ -9,7 +9,7 @@
 
 {-# LANGUAGE DoAndIfThenElse #-}
 
-module RegTesterLib where
+-- module RegTesterLib where
 
 -- base
 import System.Environment (getArgs)
@@ -28,8 +28,8 @@ import System.Directory ( doesDirectoryExist
 -- HSH
 import HSH.Command (run, runIO, (-|-))
 
---main :: IO ()
---main = updateAllStds
+main :: IO ()
+main = updateAllStds
 
 updateAllStds :: IO ()
 updateAllStds = do
